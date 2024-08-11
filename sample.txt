@@ -1,0 +1,62 @@
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+let dt =  JSON.stringify({
+    types:{
+        EIP712Domain:[
+            {
+        name: "name",
+        type: "string"
+      },
+      {
+        name: "version",
+        type: "string"
+      },
+      {
+        name: "chainId",
+        type: "uint256"
+      },
+      {
+        name: "verifyingContract",
+        type: "address"
+      },
+            ],
+            
+        Permit:[
+            {name:"owner",type:"address"},
+            {name:"spender",type:"address"},
+            {name:"value",type:"uint256"}
+            ]    
+    },
+    
+    domain:{
+         name: "souldem",
+    version: "1",
+    chainId: 80001,
+verifyingContract:"0x59549A9CcDbF93EF3C466428a1a9081B537c7f7D",
+    },
+    primaryType:"Permit",
+    message:{
+        owner:"0xf8876D65ea9c28a83b3B3F588359D942b4D854DD",
+        spender:"0x5B1FB2bE33aDae55C15598883eEc29Cc11bEA514",
+        value:10
+    }
+    
+   
+})
+
+
+function sign(result){
+    
+    const signature = result.substring(2);
+    const r = "0x" + signature.substring(0, 64);
+    const s = "0x" + signature.substring(64, 128);
+    const v = parseInt(signature.substring(128, 130), 16);
+    
+    console.log("\n r: "+r,"\n s: "+s+"\n v: "+v)
+}
+    
+    sign("0xe09ed4c14906453b0c78fde6940f394710c1972c07d1182ef2f90f0a121573b57da614c93806f4328cf7f95c62f406d38a711109be061d24732c11c5be0318471c")
+    
+   console.log(dt)
+
