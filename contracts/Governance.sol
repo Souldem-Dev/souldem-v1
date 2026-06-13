@@ -202,7 +202,7 @@ semNo
 }
 
 function editSemMarkSheet(address _student,address _mentor,string memory newIpfsCid,uint semesterNum,bytes memory sign,uint256 uniqueId)external {
-    require(semesterNum <= currentSemester[_student] && isUniqueIdUsed[uniqueId] == false,"NEIOUM");
+    require(semesterNum < currentSemester[_student] && isUniqueIdUsed[uniqueId] == false,"NEIOUM");
     require(mentors[_mentor] == true,"YNM");
     bytes32 digest = keccak256(abi.encodePacked(
             "\x19\x01",
